@@ -2,6 +2,13 @@ const express = require('express')
 const app = express
 const port = 3000
 
+//parse JSON using express
+app.use(express.json())
+app.use(express.urlencoded({
+  extended: false
+}))
+
+
 let movies = [{
     id: 1,
     title: 'nome filme',
