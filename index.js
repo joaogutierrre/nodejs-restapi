@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express
+const port = 3000
 
-let movies = [
-  {
+let movies = [{
     id: 1,
     title: 'nome filme',
     director: 'nome diretor',
@@ -29,3 +29,5 @@ app.post('/movie', (req, res) => {
   movies.push(movie)
   res.send('Movie is added to the list')
 })
+
+app.listen(port, () => console.log(`Server is listening on port ${port}`))
