@@ -20,3 +20,12 @@ let movies = [
 app.get('/movie', (req, res) => {
   res.json(movies)
 })
+
+//push a movie in the static movie list
+app.post('/movie', (req, res) => {
+  const movie = req.body
+
+  console.log(movie)
+  movies.push(movie)
+  res.send('Movie is added to the list')
+})
