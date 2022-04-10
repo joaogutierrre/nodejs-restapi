@@ -12,13 +12,13 @@ app.use(
 
 let movies = [
   {
-    id: 1,
+    id: "1",
     title: "nome filme",
     director: "nome diretor",
     releaseDate: "20-02-2020",
   },
   {
-    id: 2,
+    id: "2",
     title: "nome filme",
     director: "nome diretor",
     releaseDate: "20-02-2020",
@@ -31,7 +31,7 @@ app.get("/movie", (req, res) => {
 });
 
 //get a movie in the movie list by id
-app.get("/movie:id", (req, res) => {
+app.get("/movie/:id", (req, res) => {
   const id = req.params.id;
 
   for (let movie of movies) {
