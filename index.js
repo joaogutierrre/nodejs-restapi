@@ -1,4 +1,6 @@
 const express = require("express");
+const req = require("express/lib/request");
+const res = require("express/lib/response");
 const app = express();
 const port = 3000;
 
@@ -51,6 +53,24 @@ app.post("/movie", (req, res) => {
   console.log(movie);
   movies.push(movie);
   res.send("Movie is added to the list");
+});
+
+//update a movie from the list by id
+app.put("/movie/:id", (req, res) => {
+  const movieToBeUpdated = req.body;
+
+  for (let movie of movies) {
+    if (movie.id === movieToBeUpdated.id) {
+      movie.id = movieToBeUpdated.id;
+      movie.title = movieToBeUpdated.title;
+      movie.director = movieToBeUpdated.director;
+      movie.releaseDate = movieToBeUpdated.releaseDate;
+      res.json(movie)
+      return;
+    }
+  }
+
+  res.status(400).send("Updating error");
 });
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
